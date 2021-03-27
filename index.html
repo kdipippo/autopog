@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+    
+    <meta name="description" content="A twitch chat simulator to go with your youtube videos." />
+    
+    
+    <!-- importing the jQuery library  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- importing my own javascript files -->
+    <script src="javascript/twitchData.js"></script>
+    <script src="javascript/twitch.js"></script>
+    
+    <!-- importing the styling -->
+    <link rel="stylesheet" type="text/css" href="css/twitch.css">
+    <!-- sets the favicon -->
+    <link rel="icon" href="pics/gumman_icon.jpg">
+    
+<meta charset="utf-8">
+<title>Twitch chat simulator</title>
+</head>
+<body onload="init()">
+
+
+
+
+    
+    <div id="notchat">
+        
+        <form onsubmit="return false">
+            <input type="text" id="youtubelink" placeholder="insert full youtube URL here">
+            
+            <input type="submit" id="videoButton" onClick="getVideo()" value="get video" onKeyPress="checkForEnter(event)">
+        </form>
+        
+    </div>
+    
+    
+    
+    <div id="chat">
+        
+        <div id="aboveinput">
+            <div id="abovechat">
+                <p id="channelname" onclick="changeChannel()">gumman.one</p>
+            </div>
+        
+            <div id="chattext">
+            </div>
+        </div>
+        
+        <div id="input">
+            <form onsubmit="return false">
+                <input type="text" id="textfield" placeholder="send a message">
+                
+            
+                <input type="submit" id="chatButton" onClick="chat()" value="Chat" onKeyPress="checkForEnter(event)">
+            </form>
+            
+            
+            <button id="settingsButton" onclick="toggleSettings()">settings</button>
+            
+        </div>
+    </div>
+    
+    
+</body>
+</html>
