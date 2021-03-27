@@ -1,0 +1,26 @@
+{
+  "name": "laughtrack",
+  "version": "1.0.0",
+  "description": "Simulate a lively, fake Twitch chat that displays similar to Streamlabs OBS's twitch chat plugin.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pepper-Wood/laughtrack.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pepper-Wood/laughtrack/issues"
+  },
+  "homepage": "https://github.com/Pepper-Wood/laughtrack#readme",
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1"
+  }
+}
