@@ -5,6 +5,15 @@ body {
   padding: 0px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
+  font-size: 16px;
+}
+
+input[type="text" i], button {
+  font-size: 16px;
+}
+
+input[type="text" i] {
+  padding: 0;
 }
 
 #notchat {
@@ -20,80 +29,63 @@ body {
 #chat {
   background-color: #ffffff;
   width: 600px;
-  height: 600px;
+  height: 578px;
   position: fixed;
   left: 200px;
   top: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #chattext {
-  position: relative;
-  height: 92.5%;
-  overflow-y: auto;
-}
-
-
-/* styles the chat scrollbar for the browsers that supports webkit */
-
-#chattext::-webkit-scrollbar {
-  width: 4px;
-  border-radius: 2px;
-}
-
-#chattext::-webkit-scrollbar-thumb {
-  background-color: #484849;
-  border-radius: 2px;
-}
-
-#aboveinput {
-  height: 90%;
+  width: 100%;
+  height: 545px;
+  overflow: hidden;
 }
 
 #input {
-  position: absolute;
-  bottom: 0px;
   width: 100%;
-  height: 15%;
-  min-height: 40px;
-  max-height: 100px;
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #textfield {
-  position: absolute;
-  height: 50%;
-  width: 95%;
-  left: 2.5%;
-  border: solid;
-  border-width: 1px;
-  border-color: gray;
+  flex-grow: 1;
+  background-color: gray;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  margin: 10px;
+  padding: 10px;
 }
 
 #chatButton {
-  position: absolute;
-  height: 30%;
-  width: 15%;
-  right: 2.5%;
-  top: 60%;
   background-color: #6441a4;
+  padding: 10px;
+  font-weight: bold;
   color: white;
   border: none;
-}
-
-/* text shit */
-
-p {
-  padding: 0px;
-  margin: 7px;
+  border-radius: 3px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .chatMessage {
   display: flex;
-  justify-content: start;
   align-items: start;
   padding-right: 2px;
-  -moz-animation: slideIn 1s forwards;
-  animation: slideIn 1s forwards;
+  -moz-animation: slideIn 0.5s forwards;
+  animation: slideIn 0.5s forwards;
+  font-size: 22px;
+  line-height: 31px;
+  overflow: hidden;
 }
+
 @-webkit-keyframes slideIn {
   0% {
     transform: translateX(900px);
@@ -120,10 +112,13 @@ p {
 }
 
 .chatMessage .username {
-  width: 100px;
+  width: 270px;
   text-align: right;
   font-weight: bold;
-  padding-right: 5px;
+  padding-right: 10px;
+}
+.chatMessage .text {
+  width: 320px;
 }
 
 .chatMessage .username.red { color: red; }
@@ -132,9 +127,3 @@ p {
 .chatMessage .username.blue { color: blue; }
 .chatMessage .username.purple { color: purple; }
 .chatMessage .username.yellow { color: #aa9929; }
-
-/* hides the scrollbar for browsers that supports webkit */
-
-body::-webkit-scrollbar {
-  width: 0px;
-}

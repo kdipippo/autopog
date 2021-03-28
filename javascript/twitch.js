@@ -1,8 +1,9 @@
-let $ = jQuery = require('jquery');
+const $ = require('jquery')
 
+/* global twitchData */
 let spamming = false
 let darkMode = false
-let spamType = 'test'
+let spamType = 'laughing'
 let spamSpeed = 1200
 
 /**
@@ -10,7 +11,7 @@ let spamSpeed = 1200
  * @returns {void}
  */
 function writeMessage () {
-  $('#chattext').append(getMessage('kolop97'))
+  $('#chattext').append(getMessage())
   cutTopOfChat()
   scrollToBottom()
 }
@@ -44,13 +45,13 @@ function getMessage (
 
 /**
  * Replace the emote abbreviations in a string with img HTML.
- * @param {string} msg message with text emotes.
+ * @param {string} msg - message with text emotes.
  * @returns {string} message with img emotes.
  */
 function replaceEmotes (msg) {
   msg = ` ${msg} ` // Add space before and after.
   for (let i = 0; i < twitchData.emotes.length; i++) {
-    msg = msg.replace(` ${twitchData.emotes[i][0]} `, ` <img src='pics/twitch_emotes/${twitchData.emotes[i][1]}' alt='${twitchData.emotes[i][1]}'> `)
+    msg = msg.replaceAll(` ${twitchData.emotes[i][0]} `, ` <img src='pics/twitch_emotes/${twitchData.emotes[i][1]}' alt='${twitchData.emotes[i][1]}'> `)
   }
   msg = msg.slice(1, -1) // Remove the added spaces.
   return msg
@@ -66,24 +67,6 @@ function getUserName () {
     username += `${Math.floor(Math.random() * 120)}`
   }
   return username
-}
-
-/**
- * Hides all messages in chat.
- * @returns {void}
- */
-function hideChatText () {
-  const element = $('#chattext')
-  const hideButton = $('#hideButton')
-
-  element.toggle()
-  hideButton.empty()
-
-  if (element.is(':visible')) {
-    hideButton.append('hide')
-  } else {
-    hideButton.append('show')
-  }
 }
 
 /**

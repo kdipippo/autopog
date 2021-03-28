@@ -1,12 +1,15 @@
+/* exported twitchData */
+
+// eslint-disable-next-line no-unused-vars
 const twitchData = {
   usernamePrefixes: [
     'crazy', 'universal', 'sick', 'insane', 'cool', 'fun', 'mad', 'generic',
-    'Cpt', 'nice', 'adolf', 'Dan', 'VAC', 'SWE', 'Wizard', 'faceless', 'olof',
+    'Cpt', 'nice', 'Dan', 'VAC', 'SWE', 'Wizard', 'faceless',
     'best_', 'daddy', 'mama', 'mister_', 'davai', 'Nick', 'de_', 'the_', 'iAm',
     'Loungin', 'extra', 'BOT', 'dirty', 'shoutout_to_', 'devil', 'Only'],
   usernameSuffixes: [
     'Kappa', 'Sniper', 'marshmellow', 'Shrek', 'M', 'LUL', 'Games', 'HD', 'lolo',
-    '_yolo', 'QQ', 'stone', 'Trump', 'xD', 'meister', 'eric', 'james', 'loser',
+    '_yolo', 'QQ', 'stone', 'xD', 'meister', 'eric', 'james', 'loser',
     'haha', 'noob', 'dude', 'Bro', 'shotgun', 'DADDY', 'OneTaps', 'winner',
     'xx', 'pepe', 'explosion', 'easy', 'Nut', '000', 'Biceps', 'gamer', 'Majestic',
     'zzzzz', 'vortex', 'sound', 'tv'],
@@ -16,7 +19,7 @@ const twitchData = {
     positive: [
       'VAC', 'VAC', 'VAC', 'VAC', 'VAC', 'VAC', 'WTF', 'LUL', 'holy shit', 'SAVED',
       'ez', 'GG', 'Kappa', '4Head', 'WHAT', 'PogChamp', 'PogChamp PogChamp PogChamp PogChamp PogChamp',
-      'KQLY STYLE', 'ANY NAFFERS SeriousSloth', 'Kreygasm', 'Pog', 'PogU', 'CatJam', 'PogU Clap',
+      'KQLY STYLE', 'ANY NAFFERS SeriousSloth', 'Kreygasm', 'Pog', 'PogU', 'catJAM', 'PogU Clap',
       '5Head', '300 IQ', 'Jebaited', 'FeelsGoodMan', '<3'],
     negative: [
       'BOT', 'BOT', 'BOT', 'BOT', 'BOT', 'NA CS', 'NA CS', 'WTF',
@@ -24,6 +27,7 @@ const twitchData = {
       'NotLikeThis', '4Head', 'OMEGALUL', 'OMEGALUL Clap', 'JAME TIME', 'BibleThump',
       'My team Sadge', 'KEKW', 'Pepega', 'D:', 'WeirdChamp', 'monkaS'],
     bobross: ['SAVED', 'RUINED', 'SAVED', 'RUINED', 'CoolStoryBob'],
+    jams: ['catJAM'],
     spam: [
       'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
       'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
@@ -35,8 +39,7 @@ const twitchData = {
       'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
       'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
       'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
-      'WEEBS OUT DansGame'],
-    test: ['well obviously you can do it, we\'re talking about mortals here']
+      'WEEBS OUT DansGame']
   },
   emotes: [
     ['Kappa', 'Kappa.png'],
@@ -78,8 +81,3 @@ const twitchData = {
     ['FeelsDankMan', 'FeelsDankMan.png']
   ]
 }
-
-/*
-kolop97 well obviously you can do it, we're
-        talking about mortals here
-*/
