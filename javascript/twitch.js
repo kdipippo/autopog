@@ -407,3 +407,24 @@ function setChannelName () {
   channelname.append(name)
   $('#abovechat').append(channelname)
 }
+
+/**
+ * Initializes HTML page and inits all onclick functionality.
+ * @returns {void}
+ */
+$(document).ready(function () {
+  init()
+
+  $('#videoButton').click(function() {
+    getVideo()
+  })
+  $('#channelname').click(function() {
+    changeChannel()
+  })
+  $('#chatButton').click(function() {
+    chat()
+  })
+  $('#settingsButton').click(function() {
+    toggleSettings()
+  })
+})
