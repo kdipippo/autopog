@@ -1,3 +1,5 @@
+let $ = jQuery = require('jquery');
+
 let spamming = false
 let darkMode = false
 let spamType = 'laughing'

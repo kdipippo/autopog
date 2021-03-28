@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self';style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self';style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
   <meta name="description" content="Simulate a lively, fake Twitch chat that displays similar to Streamlabs OBS's twitch chat plugin." />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="javascript/twitchData.js"></script>
-  <script src="javascript/twitch.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/twitch.css">
-  <link rel="icon" href="pics/icon.png">
+  <link rel="stylesheet" type="text/css" href="./css/twitch.css">
+  <link rel="icon" href="./pics/icon.png">
   <meta charset="utf-8">
   <title>laughtrack</title>
 </head>
 
 <body>
   <div id="notchat">
-    <p>That move was POG</p>
-    <p>He can still win this one</p>
+    <p>We are using Node.js <span id="node-version"></span>,</p>
+    <p>Chromium <span id="chrome-version"></span>,</p>
+    <p>and Electron <span id="electron-version"></span>.</p>
   </div>
 
   <div id="chat">
@@ -31,5 +33,8 @@
       <button id="settingsButton">settings</button>
     </div>
   </div>
+  <script src="./renderer.js"></script>
+  <script src="./javascript/twitchData.js"></script>
+  <script src="./javascript/twitch.js"></script>
 </body>
 </html>
