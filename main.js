@@ -8,6 +8,7 @@ require('electron-reload')(__dirname);
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    icon: path.join(__dirname, 'pics/icon.png'),
     width: 800,
     height: 600,
     webPreferences: {

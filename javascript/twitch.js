@@ -28,11 +28,11 @@ function writeMessage () {
 
 /**
  * Randomly selects a string from a provided array.
- * @param {string[]} messageArray array of messages.
+ * @param {string[]} arr array of messages.
  * @returns {string} randomly selected entry.
  */
-function getRandomMessage (messageArray) {
-  return messageArray[Math.floor(Math.random() * messageArray.length)]
+function getRandomItem (arr) {
+  return arr[Math.floor(Math.random() * arr.length)]
 }
 
 /**
@@ -40,30 +40,16 @@ function getRandomMessage (messageArray) {
  * @returns {string} message.
  */
 function getMessage () {
-  const message = $('<p></p>')
-  message.attr('class', 'chatMessage')
-  message.append(getUserName())
-  message.append(': ')
-
-  let msgBody = ''
-
-  if (spamType === 'positive') {
-    msgBody = getRandomMessage(positiveMessages)
-  } else if (spamType === 'negative') {
-    msgBody = getRandomMessage(negativeMessages)
-  } else if (spamType === 'bobross') {
-    msgBody = getRandomMessage(bobRossMessages)
-  } else if (spamType === 'laughing') {
-    msgBody = getRandomMessage(laughingMessages)
-  } else if (spamType === 'spam') {
-    msgBody = getRandomMessage(spamMessages)
-  }
-
-  msgBody = replaceEmotes(msgBody)
-
-  message.append(msgBody)
-
-  return message
+  return `
+<div class="chatMessage">
+  <div class="username ${getRandomItem(twitchData.usernameColors)}">
+    ${getUserName()}
+  </div>
+  <div class="text">
+    ${replaceEmotes(getRandomItem(twitchData.messages[spamType]))}
+  </div>
+</div>
+`
 }
 
 /**
@@ -72,13 +58,11 @@ function getMessage () {
  * @returns {string} message with img emotes.
  */
 function replaceEmotes (msg) {
-  msg = ' ' + msg + ' ' // add space before and after
-
-  for (let i = 0; i < emotes.length; i++) {
-    msg = msg.replace(new RegExp(' ' + emotes[i][0] + ' ', 'g'), " <img src='pics/twitch_emotes/" + emotes[i][1] + "' alt='" + emotes[i][0] + "'> ")
+  msg = ` ${msg} ` // Add space before and after.
+  for (let i = 0; i < twitchData.emotes.length; i++) {
+    msg = msg.replace(` ${twitchData.emotes[i][0]} `, ` <img src='pics/twitch_emotes/${twitchData.emotes[i][1]}' alt='${twitchData.emotes[i][1]}'> `)
   }
-
-  msg = msg.slice(1, -1) // remove the added spaces
+  msg = msg.slice(1, -1) // Remove the added spaces.
   return msg
 }
 
@@ -87,25 +71,11 @@ function replaceEmotes (msg) {
  * @returns {string} randomly generated username.
  */
 function getUserName () {
-  const username = $('<span></span>')
-  username.attr('class', 'username')
-  username.css('color', getUsernameColor())
-  username.append(usernamePrefixes[Math.floor(Math.random() * usernamePrefixes.length)]) // gets a random username from the array
-  username.append(usernameSuffixes[Math.floor(Math.random() * usernameSuffixes.length)]) // gets a random username from the array
-
+  let username = getRandomItem(twitchData.usernamePrefixes) + getRandomItem(twitchData.usernameSuffixes)
   if (Math.random() > 0.5) {
-    username.append(Math.floor(Math.random() * 120))
+    username += `${Math.floor(Math.random() * 120)}`
   }
-
   return username
-}
-
-/**
- * Returns a randomly selected username color.
- * @returns {string} randomly selected color.
- */
-function getUsernameColor () {
-  return usernameColors[Math.floor(Math.random() * usernameColors.length)]
 }
 
 /**

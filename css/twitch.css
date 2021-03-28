@@ -82,9 +82,24 @@ p {
   margin: 7px;
 }
 
-.username {
+.chatMessage {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.chatMessage .username {
+  width: 100px;
+  text-align: right;
   font-weight: bold;
 }
+
+.chatMessage .username.red { color: red; }
+.chatMessage .username.green { color: green; }
+.chatMessage .username.teal { color: #40b7b5; }
+.chatMessage .username.blue { color: blue; }
+.chatMessage .username.purple { color: purple; }
+.chatMessage .username.yellow { color: #aa9929; }
 
 #settings {
   color: black;
