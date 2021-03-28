@@ -35,7 +35,8 @@ const twitchData = {
       'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
       'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
       'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
-      'WEEBS OUT DansGame']
+      'WEEBS OUT DansGame'],
+    test: ['well obviously you can do it, we\'re talking about mortals here']
   },
   emotes: [
     ['Kappa', 'Kappa.png'],
@@ -77,3 +78,8 @@ const twitchData = {
     ['FeelsDankMan', 'FeelsDankMan.png']
   ]
 }
+
+/*
+kolop97 well obviously you can do it, we're
+        talking about mortals here
+*/

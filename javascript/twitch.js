@@ -2,52 +2,42 @@ let $ = jQuery = require('jquery');
 
 let spamming = false
 let darkMode = false
-let spamType = 'laughing'
+let spamType = 'test'
 let spamSpeed = 1200
-
-/**
- * Called automatically when the HTML page is loaded.
- * @returns {void}
- */
-function init () {
-  makeSettings()
-  toggleSettings()
-  spam()
-}
 
 /**
  * Writes a random message in the chat.
  * @returns {void}
  */
 function writeMessage () {
-  const element = $('#chattext')
-  element.append(getMessage())
+  $('#chattext').append(getMessage('kolop97'))
   cutTopOfChat()
   scrollToBottom()
 }
 
 /**
  * Randomly selects a string from a provided array.
- * @param {string[]} arr array of messages.
- * @returns {string} randomly selected entry.
+ * @param {string[]} arr - Array of messages.
+ * @returns {string} Randomly selected entry.
  */
 function getRandomItem (arr) {
   return arr[Math.floor(Math.random() * arr.length)]
 }
 
 /**
- * Returns a random message.
+ * Returns the chat message HTML.
+ * @param {string} [username=getUserName()] - Username text.
+ * @param {string} [msg=Randomly selected message] - Chat message text.
  * @returns {string} message.
  */
-function getMessage () {
+function getMessage (
+  username = getUserName(),
+  msg = replaceEmotes(getRandomItem(twitchData.messages[spamType]))
+) {
   return `
 <div class="chatMessage">
-  <div class="username ${getRandomItem(twitchData.usernameColors)}">
-    ${getUserName()}
-  </div>
-  <div class="text">
-    ${replaceEmotes(getRandomItem(twitchData.messages[spamType]))}
-  </div>
+  <div class="username ${getRandomItem(twitchData.usernameColors)}">${username}</div>
+  <div class="text">${msg}</div>
 </div>
 `
 }
@@ -110,26 +100,13 @@ function clearChat () {
  * @returns {void}
  */
 function chat () {
-  const textfield = $('#textfield')
-  const element = $('#chattext')
-
-  if (textfield.val() != '') {
-    const message = $('<p></p>')
-    message.attr('class', 'chatMessage')
-    message.append(getUserName())
-    message.append(': ')
-
-    let msgBody = textfield.val()
-    msgBody = replaceEmotes(msgBody)
-
-    message.append(msgBody)
-
-    textfield.val('')
-
-    element.append(message)
+  const textfield = $('#textfield').val()
+  if (textfield !== '') {
+    $('#chattext').append(getMessage(undefined, replaceEmotes(textfield)))
     scrollToBottom()
     cutTopOfChat()
   }
+  $('#textfield').val('') // Clear contents of textfield.
 }
 
 /**
@@ -208,92 +185,6 @@ function darkmode () {
 }
 
 /**
- * Makes a "settings" box.
- * @returns {void}
- */
-function makeSettings () {
-  $('#settingsButton').css('background-color', '#4b2f7f')
-
-  const settings = $('<div></div>')
-  settings.attr('id', 'settings')
-
-  const clearButton = $('<button></button>')
-  clearButton.append('clear')
-  clearButton.attr('onClick', 'clearChat()')
-
-  const spamButton = $('<button></button>')
-  if (spamming) {
-    spamButton.append('stop spamming')
-  } else {
-    spamButton.append('spam')
-  }
-  spamButton.attr('onclick', 'spam()')
-  spamButton.attr('id', 'spamButton')
-
-  const darkModeButton = $('<button></button>')
-  darkModeButton.append('toggle dark mode')
-  darkModeButton.attr('onclick', 'darkmode()')
-
-  const selectSpam = $('<select><select>')
-  selectSpam.attr('id', 'selectspamtype')
-  selectSpam.attr('onChange', 'chooseSpam()')
-
-  const positiveSpam = $('<option></option>')
-  positiveSpam.attr('value', 'positive')
-  positiveSpam.append('Positive (CS)')
-  const negativeSpam = $('<option></option>')
-  negativeSpam.attr('value', 'negative')
-  negativeSpam.append('Negative (CS)')
-  const bobRossSpam = $('<option></option>')
-  bobRossSpam.attr('value', 'bobross')
-  bobRossSpam.append('Bob Ross')
-  const laughingSpam = $('<option></option>')
-  laughingSpam.attr('value', 'laughing')
-  laughingSpam.append('Laughing')
-  const spamSpam = $('<option></option>')
-  spamSpam.attr('value', 'spam')
-  spamSpam.append('Spam')
-
-  selectSpam.append(laughingSpam)
-  selectSpam.append(positiveSpam)
-  selectSpam.append(negativeSpam)
-  selectSpam.append(bobRossSpam)
-  selectSpam.append(spamSpam)
-
-  const selectSpeed = $('<input></input>')
-  selectSpeed.attr('type', 'range')
-  selectSpeed.attr('id', 'selectspeed')
-  selectSpeed.attr('onchange', 'chooseSpeed()')
-
-  settings.append(clearButton)
-  settings.append('<br>')
-  settings.append(spamButton)
-  settings.append('<br>')
-  settings.append(darkModeButton)
-  settings.append($('<h3></h3>').append('type of spam'))
-  settings.append(selectSpam)
-  settings.append($('<h3></h3>').append('speed'))
-  settings.append(selectSpeed)
-
-  const chat = $('#chat')
-  chat.append(settings)
-}
-
-/**
- * Shows or hides the chat.
- * @returns {void}
- */
-function toggleSettings () {
-  $('#settings').toggle()
-
-  if ($('#settings').css('display') === 'none') {
-    $('#settingsButton').css('background-color', '#6441a4')
-  } else {
-    $('#settingsButton').css('background-color', '#4b2f7f')
-  }
-}
-
-/**
  * Sets the type of spam from the input in the settings.
  * @returns {void}
  */
@@ -314,13 +205,37 @@ function chooseSpeed () {
  * Initializes HTML page and inits all onclick functionality.
  * @returns {void}
  */
-$(document).ready(function () {
-  init()
+$(function () {
+  spam()
+  darkmode()
 
-  $('#chatButton').click(function() {
-    chat()
+  $('#clearButton').on('click', function () {
+    clearChat()
   })
-  $('#settingsButton').click(function() {
-    toggleSettings()
+
+  $('#spamButton').on('click', function () {
+    spam()
+  })
+
+  $('#darkmode').on('click', function () {
+    darkmode()
+  })
+
+  $('#selectspamtype').on('change', function () {
+    chooseSpam()
+  })
+
+  $('#selectspeed').on('change', function () {
+    chooseSpeed()
+  })
+
+  $('#textfield').on('keyup', function (event) {
+    if (event.code === 'Enter') {
+      chat()
+    }
+  })
+
+  $('#chatButton').on('click', function () {
+    chat()
   })
 })

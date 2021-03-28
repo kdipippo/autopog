@@ -14,9 +14,27 @@
 
 <body>
   <div id="notchat">
-    <p>We are using Node.js <span id="node-version"></span>,</p>
-    <p>Chromium <span id="chrome-version"></span>,</p>
-    <p>and Electron <span id="electron-version"></span>.</p>
+    <table>
+      <tr><td>Node.js</td><td id="node-version"></td></tr>
+      <tr><td>Chromium</td><td id="chrome-version"></td></tr>
+      <tr><td>Electron</td><td id="electron-version"></td></tr>
+    </table>
+    <hr>
+    <div id="settings">
+      <button id="clearButton">clear</button>
+      <button id="spamButton">stop spamming</button>
+      <button id="darkmode">toggle dark mode</button>
+      <h3>type of spam</h3>
+      <select id="selectspamtype">
+        <option value="laughing">Laughing</option>
+        <option value="positive">Positive (CS)</option>
+        <option value="negative">Negative (CS)</option>
+        <option value="bobross">Bob Ross</option>
+        <option value="spam">Spam</option>
+      </select>
+      <h3>speed</h3>
+      <input type="range" id="selectspeed">
+    </div>
   </div>
 
   <div id="chat">
@@ -25,9 +43,8 @@
     </div>
 
     <div id="input">
-      <input type="text" id="textfield" placeholder="send a message">
+      <input type="text" id="textfield" placeholder="Send a message">
       <button id="chatButton" value="Chat">
-      <button id="settingsButton">settings</button>
     </div>
   </div>
   <script src="./renderer.js"></script>
