@@ -339,37 +339,6 @@ function chooseSpeed () {
 }
 
 /**
- * Displays the YouTube video.
- * @returns {void}
- */
-function getVideo () {
-  let link = $('#youtubelink').val()
-  link = link.replace('watch?v=', 'embed/')
-  link = link + '?autoplay=1'
-
-  const notChat = $('#notchat')
-  notChat.empty()
-
-  const video = $('<iframe></iframe>')
-  video.attr('src', link)
-  video.attr('id', 'ytplayer')
-  video.attr('type', 'text/html')
-  video.attr('frameborder', '0')
-  video.attr('width', '100%')
-  video.attr('height', '100%')
-  video.css('z-index', '100')
-
-  const errormsg = $('<p></p>')
-  errormsg.append("can't see the video?")
-  errormsg.append('<p></p>')
-  errormsg.append('write a full youtube link with the form: https://www.youtube.com/watch?v=[VIDEO CODE HERE]')
-  errormsg.attr('id', 'errormsg')
-
-  notChat.append(errormsg)
-  notChat.append(video)
-}
-
-/**
  * Gives the user an input field to change the name of the channel.
  * @returns {void}
  */
@@ -383,7 +352,6 @@ function changeChannel () {
   input.attr('placeholder', 'channel name')
   input.attr('id', 'channelnameinput')
 
-  // <input type="submit" id="videoButton" onClick="getVideo()" value="get video" onKeyPress="checkForEnter(event)">
   const button = $('<input></input>')
   button.attr('type', 'submit')
   button.attr('onClick', 'setChannelName()')
@@ -415,9 +383,6 @@ function setChannelName () {
 $(document).ready(function () {
   init()
 
-  $('#videoButton').click(function() {
-    getVideo()
-  })
   $('#channelname').click(function() {
     changeChannel()
   })
