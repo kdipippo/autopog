@@ -2,6 +2,9 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 
+// Enable live reload for all the files inside your project directory
+require('electron-reload')(__dirname);
+
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -34,11 +37,9 @@ app.whenReady().then(() => {
   })
 })
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
+// Quit when all windows are closed.
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit()
+  app.quit()
 })
 
 // In this file you can include the rest of your app's specific main process
