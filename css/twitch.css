@@ -10,39 +10,6 @@
   top: 0px;
 }
 
-#abovechat {
-  position: relative;
-  height: 7.5%;
-  min-height: 30px;
-  max-height: 45px;
-  text-align: center;
-  border-bottom: solid;
-  border-bottom-width: 1px;
-}
-
-#abovechat p {
-  position: relative;
-  top: 5px;
-  margin: 0px;
-  padding: 0px;
-}
-
-#abovechat input {
-  position: relative;
-  top: 20%;
-  margin: 0px;
-  padding: 0px;
-  height: 20px;
-}
-
-#abovechat input[type=submit] {
-  background-color: #6441a4;
-  color: white;
-  border: none;
-  height: 24px;
-  width: 40px;
-}
-
 #chattext {
   position: relative;
   height: 92.5%;

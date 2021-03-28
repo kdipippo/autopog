@@ -341,53 +341,12 @@ function chooseSpeed () {
 }
 
 /**
- * Gives the user an input field to change the name of the channel.
- * @returns {void}
- */
-function changeChannel () {
-  $('#abovechat').empty()
-  const form = $('<form></form>')
-  form.attr('onsubmit', 'return false')
-
-  const input = $('<input></input>')
-  input.attr('type', 'text')
-  input.attr('placeholder', 'channel name')
-  input.attr('id', 'channelnameinput')
-
-  const button = $('<input></input>')
-  button.attr('type', 'submit')
-  button.attr('onClick', 'setChannelName()')
-  button.attr('value', 'set')
-
-  form.append(input)
-  form.append(button)
-  $('#abovechat').append(form)
-}
-
-/**
- * Sets the channel name.
- * @returns {void}
- */
-function setChannelName () {
-  const name = $('#channelnameinput').val()
-  $('#abovechat').empty()
-  const channelname = $('<p></p>')
-  channelname.attr('onclick', 'changeChannel()')
-  channelname.attr('id', 'channelname')
-  channelname.append(name)
-  $('#abovechat').append(channelname)
-}
-
-/**
  * Initializes HTML page and inits all onclick functionality.
  * @returns {void}
  */
 $(document).ready(function () {
   init()
 
-  $('#channelname').click(function() {
-    changeChannel()
-  })
   $('#chatButton').click(function() {
     chat()
   })
