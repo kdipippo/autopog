@@ -5,7 +5,17 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.electron.laughtrack",
+    "productName": "laughtrack",
+    "mac": {
+      "category": "public.app-category.entertainment"
+    }
   },
   "repository": {
     "type": "git",
@@ -20,6 +30,7 @@
   "homepage": "https://github.com/Pepper-Wood/laughtrack#readme",
   "devDependencies": {
     "electron": "^12.0.2",
+    "electron-builder": "^22.10.5",
     "eslint": "^7.23.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
