@@ -1,5 +1,5 @@
 {
-  "name": "laughtrack",
+  "name": "autopog",
   "version": "1.0.0",
   "description": "Simulate a lively, fake Twitch chat that displays similar to Streamlabs OBS's twitch chat plugin.",
   "main": "main.js",
@@ -11,23 +11,23 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "build": {
-    "appId": "com.electron.laughtrack",
-    "productName": "laughtrack",
+    "appId": "com.electron.autopog",
+    "productName": "Autopog",
     "mac": {
       "category": "public.app-category.entertainment"
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pepper-Wood/laughtrack.git"
+    "url": "git+https://github.com/Pepper-Wood/Autopog.git"
   },
   "keywords": [],
   "author": "Kathryn DiPippo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Pepper-Wood/laughtrack/issues"
+    "url": "https://github.com/Pepper-Wood/Autopog/issues"
   },
-  "homepage": "https://github.com/Pepper-Wood/laughtrack#readme",
+  "homepage": "https://github.com/Pepper-Wood/Autopog#readme",
   "devDependencies": {
     "electron": "^12.0.2",
     "electron-builder": "^22.10.5",

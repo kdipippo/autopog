@@ -7,9 +7,10 @@
   <meta http-equiv="X-Content-Security-Policy" content="default-src 'self';style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
   <meta name="description" content="Simulate a lively, fake Twitch chat that displays similar to Streamlabs OBS's twitch chat plugin." />
   <link rel="stylesheet" type="text/css" href="./css/twitch.css">
+  <link rel="stylesheet" type="text/css" href="./css/recordingbutton.css">
   <link rel="icon" href="./icon.png">
   <meta charset="utf-8">
-  <title>laughtrack</title>
+  <title>Autopog</title>
 </head>
 
 <body>
@@ -18,6 +19,7 @@
       <tr><td>Node.js</td><td id="node-version"></td></tr>
       <tr><td>Chromium</td><td id="chrome-version"></td></tr>
       <tr><td>Electron</td><td id="electron-version"></td></tr>
+      <tr><td>Status</td><td id="online-status"></td></tr>
     </table>
     <hr>
     <div id="settings">
@@ -35,6 +37,13 @@
       </select>
       <h3>speed</h3>
       <input type="range" id="selectspeed">
+      <hr>
+      <h1>Speech to Text Recognition</h1>
+      <div id="miniwindow">Click me for miniwindow!</div>
+
+      <div id="recordingbutton" class="recordingbutton"></div>
+      <label for="output">Your Output: </label>
+      <p id="output">...</p>
     </div>
   </div>
 
@@ -46,7 +55,8 @@
       <button id="chatButton">Chat</button>
     </div>
   </div>
-  <script src="./renderer.js"></script>
+<!--  <script src="./renderer.js"></script> -->
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
   <script src="./javascript/twitchData.js"></script>
   <script src="./javascript/twitch.js"></script>
 </body>
