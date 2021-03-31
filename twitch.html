@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self';style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self';style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
+  <meta name="description" content="Simulate a lively, fake Twitch chat that displays similar to Streamlabs OBS's twitch chat plugin." />
+  <link rel="stylesheet" type="text/css" href="./css/twitch.css">
+  <link rel="stylesheet" type="text/css" href="./css/recordingbutton.css">
+  <link rel="icon" href="./icon.png">
+  <meta charset="utf-8">
+  <title>Autopog</title>
+</head>
+
+<body>
+  <div id="notchat">
+    <table>
+      <tr><td>Node.js</td><td id="node-version"></td></tr>
+      <tr><td>Chromium</td><td id="chrome-version"></td></tr>
+      <tr><td>Electron</td><td id="electron-version"></td></tr>
+    </table>
+    <hr>
+    <div id="settings">
+      <button id="clearButton">clear</button>
+      <button id="spamButton">stop spamming</button>
+      <button id="darkmode">toggle dark mode</button>
+      <h3>type of spam</h3>
+      <select id="selectspamtype">
+        <option value="laughing">Laughing</option>
+        <option value="positive">Positive (CS)</option>
+        <option value="negative">Negative (CS)</option>
+        <option value="bobross">Bob Ross</option>
+        <option value="jams">Jams</option>
+        <option value="spam">Spam</option>
+      </select>
+      <h3>speed</h3>
+      <input type="range" id="selectspeed">
+      <hr>
+      <p>Speech to Text Recognition</p>
+      <div id="recordingbutton" class="recordingbutton"></div>
+      <label for="output">Your Output: </label>
+      <p id="output">...</p>
+    </div>
+  </div>
+
+  <div id="chat">
+    <div id="chattext"></div>
+
+    <div id="input">
+      <input type="text" id="textfield" class="TEMPTEMP" placeholder="Send a message">
+      <button id="chatButton">Chat</button>
+    </div>
+  </div>
+<!--  <script src="./renderer.js"></script> -->
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./javascript/twitchData.js"></script>
+  <script src="./javascript/twitch.js"></script>
+</body>
+</html>

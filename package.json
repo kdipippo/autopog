@@ -2,20 +2,13 @@
   "name": "autopog",
   "version": "1.0.0",
   "description": "Simulate a lively, fake Twitch chat that displays similar to Streamlabs OBS's twitch chat plugin.",
-  "main": "main.js",
+  "main": "",
   "scripts": {
-    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder",
-    "postinstall": "electron-builder install-app-deps"
-  },
-  "build": {
-    "appId": "com.electron.autopog",
-    "productName": "Autopog",
-    "mac": {
-      "category": "public.app-category.entertainment"
-    }
+    "jslint": "eslint javascript --fix",
+    "htmllint-index": "realpath index.html | xargs -I{} pa11y {}",
+    "htmllint-twitch": "realpath twitch.html | xargs -I{} pa11y {}",
+    "htmllint": "npm run htmllint-index && npm run htmllint-twitch"
   },
   "repository": {
     "type": "git",
@@ -29,8 +22,6 @@
   },
   "homepage": "https://github.com/Pepper-Wood/Autopog#readme",
   "devDependencies": {
-    "electron": "^12.0.2",
-    "electron-builder": "^22.10.5",
     "eslint": "^7.23.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
@@ -38,7 +29,6 @@
     "eslint-plugin-promise": "^4.3.1"
   },
   "dependencies": {
-    "electron-reload": "^1.5.0",
     "jquery": "^3.6.0"
   }
 }

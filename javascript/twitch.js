@@ -6,15 +6,15 @@ let darkMode = false
 let spamType = 'laughing'
 let spamSpeed = 1200
 
-var recognition = new webkitSpeechRecognition() ||
+const recognition = new webkitSpeechRecognition() ||
   root.mozSpeechRecognition ||
   root.msSpeechRecognition ||
   root.oSpeechRecognition ||
-  root.SpeechRecognition;
-recognition.continuous = true;
-recognition.addEventListener('error', function(event) { 
-  console.error('Speech recognition error detected: ' + event.error);
-});
+  root.SpeechRecognition
+recognition.continuous = true
+recognition.addEventListener('error', function (event) {
+  console.error('Speech recognition error detected: ' + event.error)
+})
 
 /**
  * Writes a random message in the chat.
@@ -194,48 +194,30 @@ function chooseSpeed () {
   spamSpeed = 2200 - (20 * val)
 }
 
-function startRecording() {
-  recognition.onstart = function() {
-    console.log("-- onstart")
-    $('#recordingbutton').addClass("active")
+function startRecording () {
+  recognition.onstart = function () {
+    console.log('-- onstart')
+    $('#recordingbutton').addClass('active')
   }
-  recognition.onresult = function(event) {
-    console.log("-- onresult")
-    for (var i = 0; i < event.results.length; i++) {
+  recognition.onresult = function (event) {
+    console.log('-- onresult')
+    for (let i = 0; i < event.results.length; i++) {
       console.log(event.results[i][0].transcript)
-      $("#output").html(event.results[i][0].transcript)
+      $('#output').html(event.results[i][0].transcript)
     }
   }
 
   recognition.start()
 
-  recognition.onend = function() {
-    console.log("-- onend")
-    $('#recordingbutton').removeClass("active")
+  recognition.onend = function () {
+    console.log('-- onend')
+    $('#recordingbutton').removeClass('active')
   }
 }
 
-
-function stopRecording() {
+function stopRecording () {
   recognition.stop()
-  $('#recordingbutton').removeClass("active")
-}
-
-function miniWindow() {
-  let params = {
-    scrollbars: 'no',
-    resizable: 'no',
-    status: 'no',
-    location: 'no',
-    toolbar: 'no',
-    menubar: 'no',
-    width: 800,
-    height: 600,
-    left: 0,
-    top: 0
-  }
-  let flatparams = JSON.stringify(params).replaceAll('"','').replaceAll(':','=').replaceAll('{','').replaceAll('}','')
-  open('index.html', 'test', flatparams);
+  $('#recordingbutton').removeClass('active')
 }
 
 /**
@@ -246,11 +228,6 @@ $(function () {
   spam()
   darkmode()
 
-  $('#online-status').html(navigator.onLine ? 'online' : 'offline');
-
-  $('#miniwindow').on('click', function() {
-    miniWindow()
-  })
   $('#clearButton').on('click', function () {
     clearChat()
   })
@@ -282,13 +259,13 @@ $(function () {
   })
 
   $('#recordingbutton').on('click', function () {
-    console.log("Clicked!")
+    console.log('Clicked!')
     console.log(recognition)
-    if ($('#recordingbutton').hasClass("active")) {
-      console.log("Stopping!")
+    if ($('#recordingbutton').hasClass('active')) {
+      console.log('Stopping!')
       stopRecording()
     } else {
-      console.log("Starting!")
+      console.log('Starting!')
       startRecording()
     }
   })
