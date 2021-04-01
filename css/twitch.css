@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
 
 body {
   margin: 0px;
@@ -29,7 +29,7 @@ input[type="text" i] {
 #chat {
   background-color: #ffffff;
   width: 600px;
-  height: 578px;
+  height: 600px;
   position: fixed;
   left: 200px;
   top: 0;
@@ -66,7 +66,6 @@ input[type="text" i] {
 #chatButton {
   background-color: #6441a4;
   padding: 10px;
-  font-weight: bold;
   color: white;
   border: none;
   border-radius: 3px;
@@ -114,7 +113,6 @@ input[type="text" i] {
 .chatMessage .username {
   width: 270px;
   text-align: right;
-  font-weight: bold;
   padding-right: 10px;
 }
 .chatMessage .text {
@@ -127,3 +125,12 @@ input[type="text" i] {
 .chatMessage .username.blue { color: blue; }
 .chatMessage .username.purple { color: purple; }
 .chatMessage .username.yellow { color: #aa9929; }
+
+p#output {
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: auto;
+  font-family: monospace;
+  padding: 10px;
+  background-color: #f5f5f5;
+  color: #4a4a4a;
+}

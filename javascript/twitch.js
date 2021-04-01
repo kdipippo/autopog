@@ -121,6 +121,15 @@ function spam () {
 }
 
 /**
+ * Scrolls to the bottom of the chat.
+ * @returns {void}
+ */
+function scrollToBottom () {
+  const chattext = document.getElementById('chattext')
+  chattext.scrollTop = chattext.scrollHeight
+}
+
+/**
  * Recursive function that writes a message every 0-249ms.
  * @returns {void}
  */
@@ -129,15 +138,6 @@ function keepSpamming () {
     writeMessage()
     setTimeout(function () { keepSpamming() }, Math.floor(Math.random() * spamSpeed))
   }
-}
-
-/**
- * Scrolls to the bottom of the chat.
- * @returns {void}
- */
-function scrollToBottom () {
-  const chattext = document.getElementById('chattext')
-  chattext.scrollTop = chattext.scrollHeight
 }
 
 /**
@@ -198,13 +198,13 @@ function startRecording () {
   recognition.onstart = function () {
     console.log('-- onstart')
     $('#recordingbutton').addClass('active')
+    $('#output').html("[Listening]")
   }
   recognition.onresult = function (event) {
-    console.log('-- onresult')
-    for (let i = 0; i < event.results.length; i++) {
-      console.log(event.results[i][0].transcript)
-      $('#output').html(event.results[i][0].transcript)
-    }
+    let index = event.results.length - 1;
+    let transcript = event.results[index][0].transcript
+    $('#output').html(transcript)
+    handleTranscript(transcript)
   }
 
   recognition.start()
@@ -212,12 +212,32 @@ function startRecording () {
   recognition.onend = function () {
     console.log('-- onend')
     $('#recordingbutton').removeClass('active')
+    $('#output').html("[Off]")
   }
 }
 
 function stopRecording () {
   recognition.stop()
   $('#recordingbutton').removeClass('active')
+}
+
+function setSpamType(newSpamType) {
+  spamType = newSpamType
+  $('#selectspamtype').val(newSpamType)
+}
+
+function handleTranscript(transcript) {
+  // laughing, positive, negative, jams, weebs
+  if (transcript.includes("haha")) {
+    setSpamType("laughing")
+  }
+  if (transcript.includes("banger")) {
+    setSpamType("jams")
+  }
+  if ((transcript.includes("weebs")) || (transcript.includes("anime"))) {
+    setSpamType("weebs")
+  }
+  spamType = $('#selectspamtype').val()
 }
 
 /**

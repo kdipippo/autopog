@@ -26,9 +26,8 @@ const twitchData = {
       'LUL', 'HAHAHAHA', 'OMG', 'LMAO', 'so bad omg', 'xD', 'gg', 'RUINED', 'Kappa', 'WutFace',
       'NotLikeThis', '4Head', 'OMEGALUL', 'OMEGALUL Clap', 'JAME TIME', 'BibleThump',
       'My team Sadge', 'KEKW', 'Pepega', 'D:', 'WeirdChamp', 'monkaS'],
-    bobross: ['SAVED', 'RUINED', 'SAVED', 'RUINED', 'CoolStoryBob'],
     jams: ['catJAM'],
-    spam: [
+    weebs: [
       'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
       'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
       'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
@@ -48,7 +47,6 @@ const twitchData = {
     ['D:', 'gasp.png'],
     ['4Head', '4head.png'],
     ['5Head', '5Head.png'],
-    ['CoolStoryBob', 'bobross.png'],
     ['DansGame', 'dansgame.png'],
     ['NotLikeThis', 'notlikethis.png'],
     ['PogChamp', 'pogchamp.png'],
