@@ -27,7 +27,8 @@ input[type="text" i] {
 }
 
 #chat {
-  background-color: #ffffff;
+  color: white;
+  background-color: #1e1e1e;
   width: 600px;
   height: 600px;
   position: fixed;
@@ -55,7 +56,8 @@ input[type="text" i] {
 
 #textfield {
   flex-grow: 1;
-  background-color: gray;
+  color: white;
+  background-color: #141414;
   border: 0;
   border-radius: 3px;
   outline: 0;

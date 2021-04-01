@@ -17,17 +17,19 @@
 <body>
   <div id="notchat">
     <div id="settings">
-      <button id="clearButton">clear</button>
-      <button id="spamButton">stop spamming</button>
-      <button id="darkmode">toggle dark mode</button>
+      <button id="clearButton" class="button">clear</button>
+      <button id="spamButton" class="button">stop spamming</button>
+      <button id="chatButtonToggle" class="button">Toggle chat comments</button>
       <h3>type of spam</h3>
-      <select id="selectspamtype">
-        <option value="laughing">Laughing</option>
-        <option value="positive">Positive (CS)</option>
-        <option value="negative">Negative (CS)</option>
-        <option value="jams">Jams</option>
-        <option value="weebs">Weebs In</option>
-      </select>
+      <div class="select">
+        <select id="selectspamtype">
+          <option value="laughing">Laughing</option>
+          <option value="positive">Positive (CS)</option>
+          <option value="negative">Negative (CS)</option>
+          <option value="jams">Jams</option>
+          <option value="weebs">Weebs In</option>
+        </select>
+      </div>
       <h3>speed</h3>
       <input type="range" id="selectspeed">
       <hr>
@@ -46,7 +48,6 @@
       <button id="chatButton">Chat</button>
     </div>
   </div>
-<!--  <script src="./renderer.js"></script> -->
   <script src="./node_modules/jquery/dist/jquery.min.js"></script>
   <script src="./javascript/twitchData.js"></script>
   <script src="./javascript/twitch.js"></script>

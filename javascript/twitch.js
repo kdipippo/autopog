@@ -2,7 +2,6 @@
 
 /* global twitchData */
 let spamming = false
-let darkMode = false
 let spamType = 'laughing'
 let spamSpeed = 1200
 
@@ -155,29 +154,6 @@ function cutTopOfChat () {
 }
 
 /**
- * Toggles between dark mode and normal mode.
- * @returns {void}
- */
-function darkmode () {
-  const chat = $('#chat')
-  if (darkMode) {
-    darkMode = false
-    chat.css('color', 'black')
-    chat.css('background-color', 'white')
-    $('#textfield').css('background-color', 'white')
-    $('#textfield').css('color', 'black')
-    $('#chattext').removeAttr('class')
-  } else {
-    darkMode = true
-    chat.css('color', 'white')
-    chat.css('background-color', '#1e1e1e')
-    $('#textfield').css('background-color', '#141414')
-    $('#textfield').css('color', 'white')
-    $('#chattext').attr('class', 'dark')
-  }
-}
-
-/**
  * Sets the type of spam from the input in the settings.
  * @returns {void}
  */
@@ -191,6 +167,8 @@ function chooseSpam () {
  */
 function chooseSpeed () {
   const val = $('#selectspeed').val()
+  console.log(`val = ${val}`)
+  // TODO - slider is on a scale of 0 to 100, while volume meter is from 0 to 1
   spamSpeed = 2200 - (20 * val)
 }
 
@@ -246,7 +224,6 @@ function handleTranscript(transcript) {
  */
 $(function () {
   spam()
-  darkmode()
 
   $('#clearButton').on('click', function () {
     clearChat()
@@ -254,10 +231,6 @@ $(function () {
 
   $('#spamButton').on('click', function () {
     spam()
-  })
-
-  $('#darkmode').on('click', function () {
-    darkmode()
   })
 
   $('#selectspamtype').on('change', function () {
@@ -276,6 +249,10 @@ $(function () {
 
   $('#chatButton').on('click', function () {
     chat()
+  })
+
+  $('#chatButtonToggle').on('click', function () {
+    $('#input').toggle()
   })
 
   $('#recordingbutton').on('click', function () {
