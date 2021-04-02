@@ -28,11 +28,29 @@ function miniWindow () {
 }
 
 /**
+ * Switches content to contents of selected tab.
+ * @param {string} tabId - Selected tab ID.
+ * @param {string} paneId - Selected pane ID.
+ * @returns {void}
+ */
+function toggleTab (tabId, paneId) {
+  $('#nav li').removeClass('is-active')
+  $(`#${tabId}`).addClass('is-active')
+
+  $('.tab-pane').hide()
+  $(`#${paneId}`).show()
+}
+
+/**
  * Initializes HTML page and inits all onclick functionality.
  * @returns {void}
  */
 $(function () {
   $('#miniwindow').on('click', function () {
     miniWindow()
+  })
+
+  $('#nav li').on('click', function () {
+    toggleTab(this.id, this.dataset.target)
   })
 })

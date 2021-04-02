@@ -10,9 +10,11 @@ let spamming = false
 let spamType = 'laughing'
 let spamSpeed = 1200
 
-// eslint-disable-next-line no-use-before-define, no-undef
-const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
-const recognition = new SpeechRecognition()
+const recognition = new webkitSpeechRecognition() || // eslint-disable-line new-cap, no-undef
+  root.mozSpeechRecognition || // eslint-disable-line no-undef
+  root.msSpeechRecognition || // eslint-disable-line no-undef
+  root.oSpeechRecognition || // eslint-disable-line no-undef
+  root.SpeechRecognition // eslint-disable-line no-undef
 recognition.continuous = true
 recognition.addEventListener('error', function (event) {
   console.error('Speech recognition error detected: ' + event.error)
@@ -173,6 +175,7 @@ function chooseSpeed () {
   console.log(`val = ${val}`)
   // TODO - slider is on a scale of 0 to 100, while volume meter is from 0 to 1
   spamSpeed = 2200 - (20 * val)
+  console.log(`chooseSpeed means speed is now ${spamSpeed}`)
 }
 
 /**
@@ -181,7 +184,6 @@ function chooseSpeed () {
  */
 function startRecording () {
   recognition.onstart = function () {
-    console.log('-- onstart')
     $('#recordingbutton').addClass('active')
     $('#output').html('[Listening]')
   }
@@ -195,7 +197,6 @@ function startRecording () {
   recognition.start()
 
   recognition.onend = function () {
-    console.log('-- onend')
     $('#recordingbutton').removeClass('active')
     $('#output').html('[Off]')
   }
@@ -221,12 +222,23 @@ function setSpamType (newSpamType) {
 }
 
 /**
+ * Updates spam speed and updates selectspeed range input.
+ * @param {number} newSpamSpeed - New spam speed between 0 and 100.
+ * @returns {void}
+ */
+function updateSpamSpeed (newSpamSpeed) { // eslint-disable-line no-unused-vars
+  console.log(`Updating speed to ${newSpamSpeed}`)
+  spamSpeed = 2200 - (20 * newSpamSpeed)
+  $('#selectspeed').val(newSpamSpeed)
+}
+
+/**
  * Interprets live speech-to-text transcript and changes spam type based on dialogue.
  * @param {string} transcript - Input live dialogue.
  * @returns {void}
  */
 function handleTranscript (transcript) {
-  // laughing, positive, negative, jams, weebs
+  // Spam types: laughing, positive, negative, jams, weebs.
   if (transcript.includes('haha')) {
     setSpamType('laughing')
   }

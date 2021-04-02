@@ -5,10 +5,10 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "jslint": "eslint javascript --fix",
+    "jslint": "eslint js --fix",
     "htmllint-index": "realpath index.html | xargs -I{} pa11y {}",
     "htmllint-twitch": "realpath twitch.html | xargs -I{} pa11y {}",
-    "htmllint": "npm run htmllint-index && npm run htmllint-twitch"
+    "htmllint": "npm run htmllint-index || npm run htmllint-twitch"
   },
   "repository": {
     "type": "git",

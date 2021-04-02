@@ -20,16 +20,16 @@ let mediaStreamSource = null
  * @param {number} [clipLag=750] - Duration in ms for how long "clipping" indicator shows.
  * @returns {ScriptProcessorNode} Resulting configured processor.
  */
-function createAudioMeter (audioContext, clipLevel, averaging, clipLag) {
+function createAudioMeter (audioContext, clipLevel= 0.98, averaging = 0.95, clipLag = 750) {
   // TODO - createScriptProcessor() is deprecated https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createScriptProcessor
   const processor = audioContext.createScriptProcessor(512)
   processor.onaudioprocess = volumeAudioProcess
   processor.clipping = false
   processor.lastClip = 0
   processor.volume = 0
-  processor.clipLevel = clipLevel || 0.98
-  processor.averaging = averaging || 0.95
-  processor.clipLag = clipLag || 750
+  processor.clipLevel = clipLevel
+  processor.averaging = averaging
+  processor.clipLag = clipLag
 
   // This will have no effect, since we don't copy the input to the output
   //   but works around a current Chrome bug.
@@ -117,7 +117,7 @@ function drawLoop () {
 
   // Draw a bar based on the current volume.
   canvasContext.fillRect(0, 0, meter.volume * WIDTH * 1.4, HEIGHT)
-  console.log(`Volume: ${meter.volume * 100}`)
+  updateSpamSpeed(meter.volume * 100) // eslint-disable-line no-undef
 
   // Set up the next visual callback.
   window.requestAnimationFrame(drawLoop)

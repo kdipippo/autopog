@@ -1,6 +1,5 @@
 <p align="center">
-  <img width="150px" src="icon.png" alt="Autopog" />
-  <h1 align="center">Autopog</h1>
+  <img width="500px" src="autopog.png" alt="Autopog" />
 </p>
 
 ## 📝 Overview
