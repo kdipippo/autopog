@@ -40,6 +40,51 @@ function getRandomItem (arr) {
 }
 
 /**
+ * Calculate and cache total sum of frequencies for requested spam type.
+ * @param {string} spamType - Spam type.
+ * @returns {void}
+ */
+function calculateSpamCount (spamType) {
+  let count = 0
+  for (const [comment, frequency] of Object.entries(messageData[spamType])) {
+    count += frequency
+  }
+  messageDataSum[spamType] = count
+}
+
+/**
+ * Helper function to return random number between range.
+ * @param {number} min - Inclusive minimum.
+ * @param {number} max - Inclusive maximum.
+ * @returns {number} - Random number in range.
+ */
+function randomBetween (min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+/**
+ * Return randomly selected message based on spam type.
+ * @param {string} spamType - Spam type.
+ * @returns {string} - Chat message.
+ */
+function getMessageText (spamType) {
+  // Calculate and cache spam frequency count if not already cached.
+  if (!(spamType in messageDataSum)) {
+    calculateSpamCount(spamType)
+  }
+  const index = randomBetween(0, messageDataSum[spamType] - 1)
+  let frequencyTotal = 0
+  // Retrieve message, taking into account frequencies of other messagse.
+  for (const [comment, frequency] of Object.entries(messageData[spamType])) {
+    frequencyTotal += frequency
+    if (index < frequencyTotal) {
+      return comment
+    }
+  }
+  return '<UNDEFINED>'
+}
+
+/**
  * Returns the chat message HTML.
  * @param {string} [username=getUserName()] - Username text.
  * @param {string} [msg=Randomly selected message] - Chat message text.
@@ -47,7 +92,7 @@ function getRandomItem (arr) {
  */
 function getMessage (
   username = getUserName(),
-  msg = replaceEmotes(getRandomItem(twitchData.messages[spamType]))
+  msg = replaceEmotes(getMessageText(spamType))
 ) {
   return `
 <div class="chatMessage">
@@ -63,11 +108,9 @@ function getMessage (
  * @returns {string} message with img emotes.
  */
 function replaceEmotes (msg) {
-  msg = ` ${msg} ` // Add space before and after.
   for (let i = 0; i < twitchData.emotes.length; i++) {
-    msg = msg.replaceAll(` ${twitchData.emotes[i][0]} `, ` <img src='pics/twitch_emotes/${twitchData.emotes[i][1]}' alt='${twitchData.emotes[i][1]}'> `)
+    msg = msg.replaceAll(`[${twitchData.emotes[i][0]}]`, `<img class='emote' src='pics/twitch_emotes/${twitchData.emotes[i][1]}' alt='${twitchData.emotes[i][1]}'>`)
   }
-  msg = msg.slice(1, -1) // Remove the added spaces.
   return msg
 }
 

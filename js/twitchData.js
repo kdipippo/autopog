@@ -21,32 +21,6 @@ const twitchData = {
     'xx', 'pepe', 'explosion', 'easy', 'Nut', '000', 'Biceps', 'gamer', 'Majestic',
     'zzzzz', 'vortex', 'sound', 'tv'],
   usernameColors: ['red', 'green', 'teal', 'blue', 'purple', 'yellow'],
-  messages: {
-    laughing: ['OMEGALUL', 'OMEGALUL Clap', 'LULW', 'KEKW', 'LUL'],
-    positive: [
-      'VAC', 'VAC', 'VAC', 'VAC', 'VAC', 'VAC', 'WTF', 'LUL', 'holy shit', 'SAVED',
-      'ez', 'GG', 'Kappa', '4Head', 'WHAT', 'PogChamp', 'PogChamp PogChamp PogChamp PogChamp PogChamp',
-      'KQLY STYLE', 'ANY NAFFERS SeriousSloth', 'Kreygasm', 'Pog', 'PogU', 'catJAM', 'PogU Clap',
-      '5Head', '300 IQ', 'Jebaited', 'FeelsGoodMan', '<3'],
-    negative: [
-      'BOT', 'BOT', 'BOT', 'BOT', 'BOT', 'NA CS', 'NA CS', 'WTF',
-      'LUL', 'HAHAHAHA', 'OMG', 'LMAO', 'so bad omg', 'xD', 'gg', 'RUINED', 'Kappa', 'WutFace',
-      'NotLikeThis', '4Head', 'OMEGALUL', 'OMEGALUL Clap', 'JAME TIME', 'BibleThump',
-      'My team Sadge', 'KEKW', 'Pepega', 'D:', 'WeirdChamp', 'monkaS'],
-    jams: ['catJAM'],
-    weebs: [
-      'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
-      'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
-      'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
-      'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
-      'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
-      'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
-      'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
-      'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
-      'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
-      'AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap AYAYA Clap',
-      'WEEBS OUT DansGame']
-  },
   emotes: [
     ['Kappa', 'Kappa.png'],
     ['Kapp', 'Kapp.png'],
@@ -86,3 +60,76 @@ const twitchData = {
     ['FeelsDankMan', 'FeelsDankMan.png']
   ]
 }
+
+const messageData = {
+  laughing: {
+    '[OMEGALUL]': 1,
+    '[OMEGALUL][Clap]': 1,
+    '[LULW]': 1,
+    '[KEKW]': 1,
+    '[LUL]': 1
+  },
+  positive: {
+    '[VAC]': 6,
+    '[WTF]': 1,
+    '[LUL]': 1,
+    'holy shit': 1,
+    'SAVED': 1,
+    'ez': 1,
+    'GG': 1,
+    '[Kappa]': 1,
+    '[4Head]': 1,
+    'WHAT': 1,
+    '[PogChamp]': 1,
+    '[PogChamp][PogChamp][PogChamp][PogChamp][PogChamp]': 1,
+    'KQLY STYLE': 1,
+    'ANY NAFFERS [SeriousSloth]': 1,
+    '[Kreygasm]': 1,
+    '[Pog]': 1,
+    '[PogU]': 1,
+    '[catJAM]': 1,
+    '[PogU][Clap]': 1,
+    '[5Head]': 1,
+    '300 IQ': 1,
+    '[Jebaited]': 1,
+    '[FeelsGoodMan]': 1,
+    '[<3]': 1
+  },
+  negative: {
+    'BOT': 5,
+    'NA CS': 2,
+    'WTF': 1,
+    '[LUL]': 1,
+    'HAHAHAHA': 1,
+    'OMG': 1,
+    'LMAO': 1,
+    'so bad omg': 1,
+    'xD': 1,
+    'gg': 1,
+    'RUINED': 1,
+    '[Kappa]': 1,
+    '[WutFace]': 1,
+    '[NotLikeThis]': 1,
+    '[4Head]': 1,
+    '[OMEGALUL]': 1,
+    '[OMEGALUL][Clap]': 1,
+    '[BibleThump]': 1,
+    'My team [Sadge]': 1,
+    '[KEKW]': 1,
+    '[Pepega]': 1,
+    '[D:]': 1,
+    '[WeirdChamp]': 1,
+    '[monkaS]': 1
+  },
+  jams: {
+    'cat[JAM': 1
+  },
+  weebs: {
+    '[AYAYA][Clap]': 5,
+    '[AYAYA][Clap][AYAYA][Clap][AYAYA][Clap]': 3,
+    '[AYAYA][Clap][AYAYA][Clap][AYAYA][Clap][AYAYA][Clap][AYAYA][Clap]': 3,
+    'WEEBS OUT [DansGame]': 1
+  }
+}
+
+let messageDataSum = {}
