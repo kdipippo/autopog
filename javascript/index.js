@@ -1,3 +1,11 @@
+
+/**
+ * index.html companion. Manages UI interaction to open twitch.html popup.
+ *
+ * @file Contains speech-to-text handling, spam handling, and UI interactivity.
+ * @author Kathryn DiPippo
+ */
+
 /**
  * Opens a popup containing twitch.html.
  * @returns {void}

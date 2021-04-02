@@ -1,15 +1,18 @@
-// const $ = require('jquery')
+/**
+ * twitch.html companion. Manages Twitch chat UI interactions and speech/volume to spam handling.
+ *
+ * @file Contains speech-to-text handling, spam handling, and UI interactivity.
+ * @author Kathryn DiPippo
+ */
 
 /* global twitchData */
 let spamming = false
 let spamType = 'laughing'
 let spamSpeed = 1200
 
-const recognition = new webkitSpeechRecognition() ||
-  root.mozSpeechRecognition ||
-  root.msSpeechRecognition ||
-  root.oSpeechRecognition ||
-  root.SpeechRecognition
+// eslint-disable-next-line no-use-before-define, no-undef
+const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+const recognition = new SpeechRecognition()
 recognition.continuous = true
 recognition.addEventListener('error', function (event) {
   console.error('Speech recognition error detected: ' + event.error)
@@ -172,15 +175,19 @@ function chooseSpeed () {
   spamSpeed = 2200 - (20 * val)
 }
 
+/**
+ * Starts recognition detection and updates speech-to-text interface elements.
+ * @returns {void}
+ */
 function startRecording () {
   recognition.onstart = function () {
     console.log('-- onstart')
     $('#recordingbutton').addClass('active')
-    $('#output').html("[Listening]")
+    $('#output').html('[Listening]')
   }
   recognition.onresult = function (event) {
-    let index = event.results.length - 1;
-    let transcript = event.results[index][0].transcript
+    const index = event.results.length - 1
+    const transcript = event.results[index][0].transcript
     $('#output').html(transcript)
     handleTranscript(transcript)
   }
@@ -190,30 +197,44 @@ function startRecording () {
   recognition.onend = function () {
     console.log('-- onend')
     $('#recordingbutton').removeClass('active')
-    $('#output').html("[Off]")
+    $('#output').html('[Off]')
   }
 }
 
+/**
+ * Disables recognition detection and updates speech-to-text interface elements.
+ * @returns {void}
+ */
 function stopRecording () {
   recognition.stop()
   $('#recordingbutton').removeClass('active')
 }
 
-function setSpamType(newSpamType) {
+/**
+ * Sets spam type and updates spamType select dropdown.
+ * @param {string} newSpamType - Spam type string.
+ * @returns {void}
+ */
+function setSpamType (newSpamType) {
   spamType = newSpamType
   $('#selectspamtype').val(newSpamType)
 }
 
-function handleTranscript(transcript) {
+/**
+ * Interprets live speech-to-text transcript and changes spam type based on dialogue.
+ * @param {string} transcript - Input live dialogue.
+ * @returns {void}
+ */
+function handleTranscript (transcript) {
   // laughing, positive, negative, jams, weebs
-  if (transcript.includes("haha")) {
-    setSpamType("laughing")
+  if (transcript.includes('haha')) {
+    setSpamType('laughing')
   }
-  if (transcript.includes("banger")) {
-    setSpamType("jams")
+  if (transcript.includes('banger')) {
+    setSpamType('jams')
   }
-  if ((transcript.includes("weebs")) || (transcript.includes("anime"))) {
-    setSpamType("weebs")
+  if ((transcript.includes('weebs')) || (transcript.includes('anime'))) {
+    setSpamType('weebs')
   }
   spamType = $('#selectspamtype').val()
 }
@@ -256,14 +277,12 @@ $(function () {
   })
 
   $('#recordingbutton').on('click', function () {
-    console.log('Clicked!')
-    console.log(recognition)
     if ($('#recordingbutton').hasClass('active')) {
-      console.log('Stopping!')
       stopRecording()
+      stopListening() // eslint-disable-line no-undef
     } else {
-      console.log('Starting!')
       startRecording()
+      startListening() // eslint-disable-line no-undef
     }
   })
 })

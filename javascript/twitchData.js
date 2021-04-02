@@ -1,3 +1,10 @@
+/**
+ * Contains all static customizable variables related to username and twitch spam types and messages.
+ *
+ * @file Update of https://github.com/gummangummangumman/twitch_chat_simulator/blame/master/javascript/twitchData.js.
+ * @author Kathryn DiPippo, gummangummangumman 2020.
+ */
+
 /* exported twitchData */
 
 // eslint-disable-next-line no-unused-vars

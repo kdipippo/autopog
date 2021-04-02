@@ -22,7 +22,7 @@
       <button id="chatButtonToggle" class="button">Toggle chat comments</button>
       <h3>type of spam</h3>
       <div class="select">
-        <select id="selectspamtype">
+        <select id="selectspamtype" aria-label="Select Twitch chat spam type">
           <option value="laughing">Laughing</option>
           <option value="positive">Positive (CS)</option>
           <option value="negative">Negative (CS)</option>
@@ -31,10 +31,11 @@
         </select>
       </div>
       <h3>speed</h3>
-      <input type="range" id="selectspeed">
+      <input type="range" id="selectspeed" aria-label="Twitch chat message speed slider">
       <hr>
       <p>Speech to Text Recognition</p>
       <div id="recordingbutton" class="recordingbutton"></div>
+      <canvas id="meter" width="200" height="50"></canvas>
       <label for="output">Your Output: </label>
       <p id="output">[Off]</p>
     </div>
@@ -44,11 +45,12 @@
     <div id="chattext"></div>
 
     <div id="input">
-      <input type="text" id="textfield" class="TEMPTEMP" placeholder="Send a message">
+      <input type="text" id="textfield" class="TEMPTEMP" placeholder="Send a message" aria-label="send Twitch chat message">
       <button id="chatButton">Chat</button>
     </div>
   </div>
   <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./javascript/volumeMeter.js"></script>
   <script src="./javascript/twitchData.js"></script>
   <script src="./javascript/twitch.js"></script>
 </body>
