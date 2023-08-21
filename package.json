@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pepper-Wood/Autopog.git"
+    "url": "git+https://github.com/kdipippo/autopog.git"
   },
   "keywords": [],
   "author": "Kathryn DiPippo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Pepper-Wood/Autopog/issues"
+    "url": "https://github.com/kdipippo/autopog/issues"
   },
-  "homepage": "https://github.com/Pepper-Wood/Autopog#readme",
+  "homepage": "https://github.com/kdipippo/autopog#readme",
   "devDependencies": {
     "eslint": "^7.23.0",
     "eslint-config-standard": "^16.0.2",

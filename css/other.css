@@ -4,21 +4,22 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
 }
-
-.navbar.is-info, .hero.is-info {
+section.hero {
   background-color: #151E61;
 }
-.tabs li.is-active a {
-  color: #151E61 !important;
+section.hero .title, section.hero .subtitle {
+  color: #FFF;
 }
 
 .autopog {
+  color: #FFF;
+  font-weight: bold;
+  font-size: 45px;
   display: flex;
   align-items: center;
-  font-size: 50px;
-  font-weight: 300;
+  justify-content: center;
+  margin-bottom: 1em;
 }
 .autopog > img {
-  height: 60px;
-  margin-right: 6px;
+  margin-right: 5px;
 }
